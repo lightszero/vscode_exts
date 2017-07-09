@@ -2,6 +2,7 @@ import * as http from "http";
 import * as fs from "fs";
 import * as path from "path";
 import * as url from "url";
+import * as vscode from 'vscode';
 
 var IncomingForm = require("./imp/incoming_form").IncomingForm;
 export namespace localsave
@@ -15,7 +16,20 @@ export namespace localsave
                 this.onRequest(req, response);
             })
             global["_server"] = server;
-            server.listen(8881);
+            server.on("error", (err) =>
+            {
+                console.warn("server fail."+err.message);
+                vscode.window.showInformationMessage('server 8881 fail.'+err.message);
+            });
+            try
+            {
+                server.listen(8881);
+            }
+            catch (e)
+            {
+                console.warn("server listen fail.");
+                vscode.window.showInformationMessage('server listen 8881 fail.');
+            }
         }
         onRequest(req: http.IncomingMessage, response: http.ServerResponse)
         {

@@ -1,6 +1,6 @@
 {
-    "name": "testtt",
-    "displayName": "testtt",
+    "name": "localsave_vscode",
+    "displayName": "localsave_vscode",
     "description": "sdadfsdaf",
     "version": "0.0.1",
     "publisher": "lights",
@@ -15,10 +15,7 @@
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.sayHello",
-            "title": "Hello World"
-        }]
+
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
